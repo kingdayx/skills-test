@@ -12,6 +12,7 @@ import "./WalletAccess.css";
 import openNotification from "../../helpers/notification";
 import { SERVER_URL } from "../../../constants/env";
 const { TextArea } = Input;
+import BackgroundMain from "../../../assets/image/background_main.png";
 
 function Launch(props) {
   const [t, i18n] = useTranslation();
@@ -107,7 +108,7 @@ function Launch(props) {
 
   return (
     <div className="relative">
-      <img src="/assets/img/background_main.png" />
+      <img src={BackgroundMain} />
       <div className="absolute top-0 w-full h-full flex flex-col ">
         <Nav className="w-11/12 xl:w-5/6 m-auto " />
         {accessMode === 0 ? (

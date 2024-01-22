@@ -8,6 +8,7 @@ import Wallet from "../../utils/wallet";
 import tokenList from "../../utils/polygon.json";
 import { SERVER_URL } from "../../constants/env";
 import { getTokenBaseInfo } from "../../utils/tokenUtils";
+
 function WalletTokenModal(props) {
   const wallet = new Wallet();
   const serverUrl = SERVER_URL;

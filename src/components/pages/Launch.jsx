@@ -2,7 +2,9 @@ import { Button, Row, Col } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useViewportScroll } from "framer-motion";
-
+import PresaleLogo from "../../assets/image/presaleLogo.png";
+import BackgroundMain from "../../assets/image/background_main.png";
+import BSC from "../../assets/image/bsc.png";
 import Nav from "../component/Nav";
 import Footer from "../component/Footer";
 import PresaleCard from "../component/PresaleCard";
@@ -27,7 +29,7 @@ function Launch() {
     );
     return [
       {
-        logo: "./assets/img/presaleLogo.png",
+        logo: PresaleLogo,
         state: 0,
         tokenName: "MGL",
         flokinomix: (bnbprice / 0.018).toFixed(3),
@@ -41,7 +43,7 @@ function Launch() {
 
   return (
     <div className="relative">
-      <img src="/assets/img/background_main.png" />
+      <img src={BackgroundMain} />
       <div className="absolute top-0 w-full h-full flex flex-col ">
         <Nav className="w-11/12 xl:w-5/6 m-auto " />
         <div className="w-5/6 lg:w-4/5 m-auto my-12 flex-grow">
@@ -54,7 +56,7 @@ function Launch() {
 
             <Col span={8} className="text-right">
               <a href="" className="font-bold">
-                <img src="./assets/img/bsc.png" className="inline mr-4 w-8" />
+                <img src={BSC} className="inline mr-4 w-8" />
                 BSC MAINNET
               </a>
             </Col>

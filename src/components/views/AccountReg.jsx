@@ -16,7 +16,13 @@ import openNotification from "../helpers/notification";
 import RegCard from "../component/RegCard";
 import { SERVER_URL } from "../../constants/env";
 import Wallet from "../../utils/wallet";
+
+import { auth, db } from "../../App";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
+
 const wallet = new Wallet();
+
 function AccountReg(props) {
   const [form] = Form.useForm();
   const [email, setEmail] = useState("");
@@ -24,7 +30,7 @@ function AccountReg(props) {
   const [verificationCode, setVerificationCode] = useState(0);
   const [inviteCode, setInviteCode] = useState(0);
   const [message, setMessage] = useState("");
-  const [isValidated, setValidate] = useState(false);
+  const [isValidated, setValidate] = useState(true);
   const [t, i18n] = useTranslation();
   const serverUrl = SERVER_URL;
   const onChange = (e) => {
@@ -72,19 +78,31 @@ function AccountReg(props) {
   };
   const register = () => {
     form.validateFields().then((values) => {
-      console.log("validateFile");
-      axios
-        .post(serverUrl + "users/signup", {
-          email: email,
-          email_verify: verificationCode,
-          password: password,
-          confirm_password: password,
-          country: props.country.title,
-          invite_code: inviteCode,
-          locale: localStorage.getItem("locale") || "Mn",
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log(userCredential);
+          setValidate(true);
+          goMain;
         })
-        .then((response) => {
-          if (response.data.response) {
+        .catch((error) => {
+          console.log(error);
+        })
+        .then(async () => {
+          try {
+            const docRef = await addDoc(collection(db, "users"), {
+              email: email,
+              password: password,
+            });
+            setValidate(true);
+            console.log("Document written with ID: ", docRef.id);
+            console.log("validation worked", isValidated);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+        })
+        .then(() => {
+          if (isValidated) {
+            console.log("validation worked again", isValidated);
             openNotification(
               t("Success"),
               t("Account successfully created!"),
@@ -96,27 +114,24 @@ function AccountReg(props) {
               val: true,
               data: t("Account successfully created!"),
             });
-            localStorage.setItem(
-              "userInfo",
-              JSON.stringify(response.data.data.userInfo)
-            );
-            localStorage.setItem(
-              "jwtToken",
-              JSON.stringify(response.data.data.token)
-            );
-
-            if (response.data.data.keyPair) {
-              localStorage.setItem(
-                "privateKey",
-                wallet.decrypt(response.data.data.keyPair[0].privateKey)
-              );
-              localStorage.setItem(
-                "publicKey",
-                JSON.stringify(response.data.data.keyPair[0].publicKey)
-              );
-            }
+            // localStorage.setItem(
+            //   "userInfo",
+            //   JSON.stringify(response.data.data.userInfo)
+            // );
+            // localStorage.setItem(
+            //   "jwtToken",
+            //   JSON.stringify(response.data.data.token)
+            // );
+            // if (response.data.data.keyPair) {
+            //   localStorage.setItem(
+            //     "privateKey",
+            //     wallet.decrypt(response.data.data.keyPair[0].privateKey)
+            //   );
+            //   localStorage.setItem(
+            //     "publicKey",
+            //     JSON.stringify(response.data.data.keyPair[0].publicKey)
+            //   );
           } else {
-            openNotification(t("Fail!"), response.data.message, false);
             setMessage({
               style: "text-red-500",
               val: false,
@@ -125,6 +140,57 @@ function AccountReg(props) {
           }
         });
     });
+    //   axios
+    //     .post(serverUrl + "users/signup", {
+    //       email: email,
+    //       email_verify: verificationCode,
+    //       password: password,
+    //       confirm_password: password,
+    //       country: props.country.title,
+    //       invite_code: inviteCode,
+    //       locale: localStorage.getItem("locale") || "Mn",
+    //     })
+    //     .then((response) => {
+    //       if (response.data.response) {
+    //         openNotification(
+    //           t("Success"),
+    //           t("Account successfully created!"),
+    //           true,
+    //           goMain
+    //         );
+    //         setMessage({
+    //           style: "text-green-500",
+    //           val: true,
+    //           data: t("Account successfully created!"),
+    //         });
+    //         localStorage.setItem(
+    //           "userInfo",
+    //           JSON.stringify(response.data.data.userInfo)
+    //         );
+    //         localStorage.setItem(
+    //           "jwtToken",
+    //           JSON.stringify(response.data.data.token)
+    //         );
+
+    //         if (response.data.data.keyPair) {
+    //           localStorage.setItem(
+    //             "privateKey",
+    //             wallet.decrypt(response.data.data.keyPair[0].privateKey)
+    //           );
+    //           localStorage.setItem(
+    //             "publicKey",
+    //             JSON.stringify(response.data.data.keyPair[0].publicKey)
+    //           );
+    //         }
+    //       } else {
+    //         openNotification(t("Fail!"), response.data.message, false);
+    //         setMessage({
+    //           style: "text-red-500",
+    //           val: false,
+    //           data: t("Account failed!"),
+    //         });
+    //       }
+    //     });
   };
 
   const goMain = () => {
@@ -173,7 +239,7 @@ function AccountReg(props) {
           name="Verification"
           rules={[
             {
-              required: true,
+              required: false,
               message: t("Please input your E-mail Verification Code!"),
             },
             { max: 4, message: t("Please input less than 4 characters") },

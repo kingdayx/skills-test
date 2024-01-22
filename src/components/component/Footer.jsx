@@ -1,11 +1,13 @@
 import { Button, Row, Col } from "antd";
 import React from "react";
 import LangSelect from "./LangSelect";
+import Mark2 from "../../assets/image/mark2.png";
+
 function Footer() {
   return (
     <div className="flex justify-between mt-32 items-center pb-4">
       <div className="w-full flex flex-col md:block items-center ">
-        <img src="/assets/img/mark2.png" className="w-8 inline mx-4" />
+        <img src={Mark2} className="w-8 inline mx-4" />
         <a className="mt-2">Copyright © 2021 All rights reserved.</a>
       </div>
       <div className="md:flex hidden ">

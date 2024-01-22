@@ -19,6 +19,7 @@ import { useTranslation } from "react-i18next";
 import LangSelect from "./LangSelect";
 import openNotification from "../helpers/notification";
 import NavCollapse from "./NavCollapse";
+import Mark2 from "../../assets/image/mark2.png";
 
 function Nav(props) {
   const [t, i18n] = useTranslation();
@@ -134,7 +135,7 @@ function Nav(props) {
         >
           <div className="flex items-center   flex-grow ">
             <Link to="/" className="h-4/5">
-              <img src="/assets/img/mark2.png" className="h-full" />
+              <img src={Mark2} className="h-full" />
             </Link>
             <Dropdown overlay={menu} placement="bottomLeft">
               <a className="hidden md:flex flex m-4 text-gray-700">

@@ -5,6 +5,7 @@ import RegionCard from "../views/RegionCard";
 import RegionSelectCard from "../views/RegionSelectCard";
 import AccountReg from "../views/AccountReg";
 import { Navigate } from "react-router";
+import Mark2 from "../../assets/image/mark2.png";
 
 function Register() {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -33,10 +34,7 @@ function Register() {
           }}
           transition={{ duration: 2 }}
         >
-          <img
-            src="/assets/img/mark2.png"
-            className="w-16 absolute top-0 mt-8 ml-24"
-          />
+          <img src={Mark2} className="w-16 absolute top-0 mt-8 ml-24" />
           {step == 0 && (
             <RegionCard
               className="absolute top-0 w-screen h-screen register-back"

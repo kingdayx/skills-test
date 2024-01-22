@@ -10,6 +10,7 @@ import {
 import { RiArrowLeftRightFill } from "react-icons/ri";
 import { ImProfile } from "react-icons/im";
 import { BsFillCreditCard2FrontFill } from "react-icons/bs";
+import Mark2 from "../../assets/image/mark2.png";
 
 function WalletNav(props) {
   const [t, i18n] = useTranslation();
@@ -47,7 +48,7 @@ function WalletNav(props) {
         <Col className="text-center p-8  w-full">
           {/*<p className="text-4xl myColor1 font-bold">LOGO</p>*/}
           <Link to="/">
-            <img src="/assets/img/mark2.png" className="w-3/5 inline" />
+            <img src={Mark2} className="w-3/5 inline" />
           </Link>
         </Col>
       </Row>

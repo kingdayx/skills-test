@@ -10,6 +10,7 @@ import BuySellTable from "../../component/BuySellTable";
 import BuySellList from "../../component/BuySellList";
 // import Pagination from '../../component/Pagination';
 import { SERVER_URL } from "../../../constants/env";
+import Background2 from "../../../assets/image/background2.png";
 
 function Swap() {
   const [t, i18n] = useTranslation();
@@ -76,10 +77,7 @@ function Swap() {
 
   return (
     <div className="relative mb-0 bg-gray-50 h-full flex flex-col">
-      <img
-        src="/assets/img/background2.png"
-        className="w-screen absolute top-0 back"
-      />
+      <img src={Background2} className="w-screen absolute top-0 back" />
       {/*<img src="./assets/img/earth2.png" className="absolute w-2/3 bottom-0 right-0" />*/}
       <div className="w-full bg-white">
         <Nav className="w-11/12 xl:w-5/6 m-auto" setSubmenu={setSubmenu} />

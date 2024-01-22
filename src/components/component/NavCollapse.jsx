@@ -10,6 +10,7 @@ import {
 import { BsCreditCard2Front, BsCash, BsPeople } from "react-icons/bs";
 import LangSelect from "./LangSelect";
 import { useTranslation } from "react-i18next";
+
 const { Panel } = Collapse;
 const CollapseData = [
   { title: "Products", data: [{ icon: "", subtitle: "" }] },

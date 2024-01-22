@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import React, { useState, useEffect } from "react";
+import "antd/dist/reset.css";
 import "./App.css";
 import Home from "./components/pages/Home.jsx";
 import Register from "./components/pages/Register.jsx";
@@ -17,7 +18,10 @@ import ForgotPassword from "./components/pages/ForgotPassword";
 import ResetPassword from "./components/pages/ResetPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyBZMmYAXfwIgeij2zd2dOzMsdBKWLG3-ME",
@@ -40,6 +44,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+export const db = getFirestore(app);
+
+export const auth = getAuth(app);
 
 console.log(analytics);
 function App() {
@@ -47,32 +54,34 @@ function App() {
     localStorage.removeItem("user");
   }, []);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/walletphrase/:id" element={<WalletAccess />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/walletMain" element={<WalletLanding />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/adminlogin" element={<AdminLogin />} />
-        <Route path="/launchpad" element={<Launch />} />
-        <Route path="/ieo/:url" element={<Redirection />} />
-        <Route path="/wallet" element={<Wallet />}>
-          <Route path="/wallet/:id" element={<Wallet />}>
-            <Route
-              path="/wallet/:id/:presaleToken/:chainId"
-              element={<Wallet />}
-            />
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/walletphrase/:id" element={<WalletAccess />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/walletMain" element={<WalletLanding />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/adminlogin" element={<AdminLogin />} />
+          <Route path="/launchpad" element={<Launch />} />
+          <Route path="/ieo/:url" element={<Redirection />} />
+          <Route path="/wallet" element={<Wallet />}>
+            <Route path="/wallet/:id" element={<Wallet />}>
+              <Route
+                path="/wallet/:id/:presaleToken/:chainId"
+                element={<Wallet />}
+              />
+            </Route>
           </Route>
-        </Route>
-        <Route path="/wallet/:id" element={<Wallet />} />
-        <Route path="/p2p" element={<BuySell />} />
-        <Route path="/userinfo" element={<UserInfo />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/resetpassword/:jxt" element={<ResetPassword />} />
-        <Route path="/admin" element={<AdminPanel />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="/wallet/:id" element={<Wallet />} />
+          <Route path="/p2p" element={<BuySell />} />
+          <Route path="/userinfo" element={<UserInfo />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/resetpassword/:jxt" element={<ResetPassword />} />
+          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

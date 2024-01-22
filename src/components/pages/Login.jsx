@@ -2,6 +2,8 @@ import { Button, Card } from "antd";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Register from "../views/Register";
+import Mark2 from "../../assets/image/mark2.png";
+
 function LogIn() {
   return (
     <motion.div
@@ -12,10 +14,7 @@ function LogIn() {
       }}
       transition={{ duration: 2 }}
     >
-      <img
-        src="/assets/img/mark2.png"
-        className="w-16 absolute top-0 mt-8 ml-24"
-      />
+      <img src={Mark2} className="w-16 absolute top-0 mt-8 ml-24" />
       <Register className="absolute top-0 w-screen h-screen login-back" />
     </motion.div>
   );

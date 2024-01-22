@@ -18,10 +18,18 @@ import setAuthToken from "../../utils/setAuthToken";
 import openNotification from "../helpers/notification";
 import { SERVER_URL } from "../../constants/env";
 import Wallet from "../../utils/wallet";
+import { auth, db } from "../../App";
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+
 const wallet = new Wallet();
+
 function Register(props) {
   const userData = useContext(UserContext);
-
+  const [credentials, setCredentials] = useState("");
   const [t, i18n] = useTranslation();
   const [form] = Form.useForm();
   const [email, setEmail] = useState("");
@@ -33,14 +41,28 @@ function Register(props) {
   useEffect(() => {}, []);
 
   const login = () => {
-    return form
+    console.log("log in");
+    form
       .validateFields()
       .then((values) => {
-        console.log(userData);
-        userData.login({
-          email: email,
-          password: password,
-        });
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            setCredentials(userCredential);
+            console.log("logged in user", userCredential);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .then(() => {
+            console.log("log in worked!");
+            localStorage.setItem("userInfo", JSON.stringify(credentials));
+            openNotification(
+              t("Successful"),
+              t("Welcome to our site."),
+              true,
+              goMain
+            );
+          });
         // axios.post(serverUrl+"users/login",{
         //   email:email,
         //   password:password

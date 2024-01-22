@@ -2,26 +2,29 @@ import { Button } from "antd";
 import React from "react";
 import { motion, useViewportScroll } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import Support from "../../assets/image/support.png";
+import Blog2 from "../../assets/image/blog2.png";
+import Community2 from "../../assets/image/community2.png";
 
 function TouchCard() {
   const { t, i18n } = useTranslation();
   const inf = [
     {
-      url: "/assets/img/support.png",
+      url: Support,
       title: t("Support"),
       content: t(
         "Got a problem? Just get in touch. Our support team is avaiable 24/7."
       ),
     },
     {
-      url: "/assets/img/blog2.png",
+      url: Blog2,
       title: t("Blog"),
       content: t(
         "News and updates from the world's leading cryptocurrency exchange."
       ),
     },
     {
-      url: "/assets/img/community2.png",
+      url: Community2,
       title: t("Community"),
       content: t(
         "MGL is global. Join the discussion in our worldwide communities."

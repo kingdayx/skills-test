@@ -18,7 +18,10 @@ import setAuthToken from "../../utils/setAuthToken";
 import openNotification from "../helpers/notification";
 import { SERVER_URL } from "../../constants/env";
 import Wallet from "../../utils/wallet";
+import Mark2 from "../../assets/image/mark2.png";
+
 const wallet = new Wallet();
+
 function ForgotPassword(props) {
   const [t, i18n] = useTranslation();
   const [form] = Form.useForm();
@@ -58,10 +61,7 @@ function ForgotPassword(props) {
       }}
       transition={{ duration: 2 }}
     >
-      <img
-        src="/assets/img/mark2.png"
-        className="w-16 absolute top-0 mt-8 ml-24"
-      />
+      <img src={Mark2} className="w-16 absolute top-0 mt-8 ml-24" />
       <RegCard
         className="absolute top-0 w-screen h-screen login-back"
         cardClassName="w-full h-full rounded-none flex flex-col flex-wrap justify-center items-center"

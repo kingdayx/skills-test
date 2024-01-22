@@ -5,7 +5,12 @@ import axios from "axios";
 import { CgFileDocument } from "react-icons/cg";
 import { MdInsertLink } from "react-icons/md";
 import { useTranslation } from "react-i18next";
+import MoonHere from "../../../assets/image/moonhere.jpg";
+import MoonAddress from "../../../assets/image/moonaddress.jpg";
+import MoonMail from "../../../assets/image/moonemail.jpg";
+
 const { Paragraph } = Typography;
+
 function WalletBuy(props) {
   const [publicKey, setPublicKey] = useState(localStorage.getItem("publicKey"));
   const [t, i18n] = useTranslation();
@@ -35,10 +40,7 @@ function WalletBuy(props) {
             <p>{t("2. Select currency BUSD (Bep20).")}</p>
           </Col>
           <Col span={12}>
-            <img
-              src="/assets/img/moonhere.jpg"
-              className="shadow border-2 border-white "
-            />
+            <img src={MoonHere} className="shadow border-2 border-white " />
           </Col>
         </Row>
 
@@ -47,10 +49,7 @@ function WalletBuy(props) {
             <p>{t("3. Copy your wallet address above and paste here.")}</p>
           </Col>
           <Col span={12}>
-            <img
-              src="/assets/img/moonaddress.jpg"
-              className="shadow border-2 border-white "
-            />
+            <img src={MoonAddress} className="shadow border-2 border-white " />
           </Col>
         </Row>
 
@@ -59,10 +58,7 @@ function WalletBuy(props) {
             <p>{t("4. Follow rest of Moonpay instructions.")}</p>
           </Col>
           <Col span={12}>
-            <img
-              src="/assets/img/moonemail.jpg"
-              className="shadow border-2 border-white "
-            />
+            <img src={MoonMail} className="shadow border-2 border-white " />
           </Col>
         </Row>
 

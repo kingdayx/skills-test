@@ -13,6 +13,9 @@ import setAuthToken from "../../../utils/setAuthToken";
 import WalletVerifyModal from "../../views/WalletVerifyModal";
 import { SERVER_URL } from "../../../constants/env";
 import "./WalletLanding.css";
+import BackgroundMain from "../../../assets/image/background_main.png";
+import Mark2 from "../../../assets/image/mark2.png";
+
 function Launch() {
   const [t, i18n] = useTranslation();
 
@@ -117,7 +120,7 @@ function Launch() {
   return (
     <>
       <div className="relative">
-        <img src="/assets/img/background_main.png" />
+        <img src={BackgroundMain} />
         <div className="absolute top-0 w-full h-full flex flex-col ">
           <Nav className="w-11/12 xl:w-5/6 m-auto " />
           {!accessMode && !createMode ? (
@@ -145,7 +148,7 @@ function Launch() {
                       <Row className="wallet-detail">
                         <Col span={24}>
                           <img
-                            src="./assets/img/mark2.png"
+                            src={Mark2}
                             style={{ width: 135, height: 135 }}
                           />
                         </Col>
@@ -179,7 +182,7 @@ function Launch() {
                       <Row className="wallet-detail">
                         <Col span={24}>
                           <img
-                            src="./assets/img/mark2.png"
+                            src={Mark2}
                             style={{ width: 135, height: 135 }}
                           />
                         </Col>
@@ -359,7 +362,7 @@ function Launch() {
                     <Col span={24} className="text-center">
                       <div className="image-warp">
                         <img
-                          src="./assets/img/mark2.png"
+                          src={Mark2}
                           style={{ width: 95, height: 95 }}
                           className="centered-image"
                         />
@@ -440,7 +443,7 @@ function Launch() {
                       <Row className="wallet-detail">
                         <Col span={24}>
                           <img
-                            src="./assets/img/mark2.png"
+                            src={Mark2}
                             style={{ width: 135, height: 135 }}
                           />
                         </Col>

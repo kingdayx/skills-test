@@ -5,7 +5,7 @@ import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
 import { MdOutlineLightMode } from "react-icons/md";
 import openNotification from "../helpers/notification";
 import WalletTokenModal from "./WalletTokenModal";
-
+import Mark2 from "../../assets/image/mark2.png";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import setAuthToken from "../../utils/setAuthToken";
@@ -16,7 +16,7 @@ const { TabPane } = Tabs;
 
 function WalletPortfolio(props) {
   const [t, i18n] = useTranslation();
-  const [modalShow, setModalShow] = useState(false);
+  const [modalShow, setModalShow] = useState(true);
 
   var Tokens = [{ name: "MGL", price: 100, balance: 100 }];
 
@@ -72,10 +72,7 @@ function WalletPortfolio(props) {
               <Row className="mt-2 text-lg myColor1" key={idx}>
                 <Col span={6}>
                   {item.name.toLowerCase() === "mgl" ? (
-                    <img
-                      src="/assets/img/mark2.png"
-                      className="w-7 inline mr-4"
-                    />
+                    <img src={Mark2} className="w-7 inline mr-4" />
                   ) : (
                     <div></div>
                   )}

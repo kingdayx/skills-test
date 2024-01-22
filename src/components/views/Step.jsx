@@ -3,38 +3,44 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
+import Step1 from "../../assets/image/step1.png";
+import Step2 from "../../assets/image/step2.png";
+import Step3 from "../../assets/image/step3.png";
+import Step4 from "../../assets/image/step4.png";
+import Step5 from "../../assets/image/step5.png";
+import Step6 from "../../assets/image/step6.png";
 
 function Step() {
   const { t, i18n } = useTranslation();
   const [index, setIndex] = useState(0);
   const stepData = [
     {
-      picUrl: "/assets/img/step1.png",
+      picUrl: Step1,
       step: t("Step 1"),
       subtitle: t("Get Started"),
     },
     {
-      picUrl: "/assets/img/step2.png",
+      picUrl: Step2,
       step: t("Step 2"),
       subtitle: t("Confirmation"),
     },
     {
-      picUrl: "/assets/img/step3.png",
+      picUrl: Step3,
       step: t("Step 3"),
       subtitle: t("Identify Verification"),
     },
     {
-      picUrl: "/assets/img/step4.png",
+      picUrl: Step4,
       step: t("Step 4"),
       subtitle: t("Buy Cryptocurrency"),
     },
     {
-      picUrl: "/assets/img/step5.png",
+      picUrl: Step5,
       step: t("Step 5"),
       subtitle: t("Sell Cryptocurrency"),
     },
     {
-      picUrl: "/assets/img/step6.png",
+      picUrl: Step6,
       step: t("Step 6"),
       subtitle: t("Send and Receive"),
     },

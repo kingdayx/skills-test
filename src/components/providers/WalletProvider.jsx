@@ -33,7 +33,7 @@ function WalletProvider(props) {
   const userData = useContext(UserContext);
   const { t, i18n } = useTranslation();
   const [connection, setConnection] = useState(true);
-  const [myWallet, setWallet] = useState({});
+  const [myWallet, setWallet] = useState(true);
   const [loading, setLoading] = useState(false);
   const [tokenList, setTokenList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -49,10 +49,7 @@ function WalletProvider(props) {
     setLoading(true);
     setAuthToken(localStorage.jwtToken);
     axios
-      .post(SERVER_URL + "wallets/getassets", {
-        network: network.url,
-        publicKey: myWallet.publicKey,
-      })
+      .post()
       .then((response) => {
         if (response.data.response) {
           setTokenList(response.data.data);
@@ -98,10 +95,7 @@ function WalletProvider(props) {
     setConnection(true);
     setAuthToken(localStorage.jwtToken);
     axios
-      .post(SERVER_URL + "wallets/gettransaction", {
-        network: network.url,
-        publicKey: myWallet.publicKey,
-      })
+      .post()
       .then((response) => {
         if (response.data.response) {
           let oldtransaction = [];
@@ -124,7 +118,7 @@ function WalletProvider(props) {
   }, [localStorage.getItem("publicKey"), localStorage.getItem("privateKey")]);
 
   useEffect(() => {
-    if (myWallet) myWallet.setNetwork(network.url);
+    // if (myWallet) setNetwork(network.url);
     getTokenList();
     getTransaction();
   }, [network]);

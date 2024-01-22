@@ -3,12 +3,17 @@ import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ShoppingCard from "../component/ShoppingCard";
+import LaunchPad from "../../assets/image/launchpad.png";
+import Shopping from "../../assets/image/tokeninfo.png";
+import TokenInfo from "../../assets/image/shopping.png";
+import Defi from "../../assets/image/defi.png";
+
 const delay = 5000;
 const card = [
-  { url: "/assets/img/launchpad.png", link: "http://ieo.mglcoin.io/" },
-  { url: "/assets/img/tokeninfo.png", link: "http://info.mglcoin.io/" },
-  { url: "/assets/img/defi.png", link: "http://defi.mglcoin.io/" },
-  { url: "/assets/img/shopping.png", link: "http://exchange.mglcoin.io/" },
+  { url: LaunchPad, link: "http://ieo.mglcoin.io/" },
+  { url: TokenInfo, link: "http://info.mglcoin.io/" },
+  { url: Defi, link: "http://defi.mglcoin.io/" },
+  { url: Shopping, link: "http://exchange.mglcoin.io/" },
 ];
 function Mark() {
   const [index, setIndex] = useState(0);
@@ -32,7 +37,7 @@ function Mark() {
         ))}
       </div>
 
-      <div className="slideshowDots md:hidden">
+      <div className="flex flex-row slideshowDots md:hidden ">
         {card.map((item, idx) => (
           <div
             key={idx}

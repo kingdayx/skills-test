@@ -4,16 +4,14 @@ import Nav from "../../component/Nav";
 import UserInfoTable from "../../component/UserInfoTable";
 import UserInfoList from "../../component/UserInfoList";
 import avatarImage from "../../../assets/image/avatar.png";
+import Background2 from "../../../assets/image/background2.png";
 
 function UserInfo() {
   const [submenu, setSubmenu] = useState(false);
 
   return (
     <div className="relative mb-0 bg-gray-100 h-full flex flex-col">
-      <img
-        src="/assets/img/background2.png"
-        className="w-screen absolute top-0 back"
-      />
+      <img src={Background2} className="w-screen absolute top-0 back" />
       {/*<img src="./assets/img/earth2.png" className="absolute w-2/3 bottom-0 right-0" />*/}
       <div className="w-full bg-white">
         <Nav className="w-11/12 xl:w-5/6 m-auto" setSubmenu={setSubmenu} />

@@ -1,7 +1,9 @@
-@import "antd/dist/reset.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @import "antd/dist/reset.css"; */
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
 
 body {
   overflow-x: hidden;
@@ -130,6 +132,7 @@ body {
 }
 .slide {
   transition: ease 1000ms;
+  display: flex;
 }
 .slideshowDot.active {
   background-color: #0060a5;
@@ -146,7 +149,6 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .login-back {
-  background-image: url("./assets/image/login_back.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }

@@ -13,11 +13,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserProvider>
       <PresaleProvider>
-        <ConfigProvider>
-          <StyleProvider hashPriority="high">
-            <App />
-          </StyleProvider>
-        </ConfigProvider>
+        <WalletProvider>
+          <ConfigProvider>
+            <StyleProvider hashPriority="high">
+              <App />
+            </StyleProvider>
+          </ConfigProvider>
+        </WalletProvider>
       </PresaleProvider>
     </UserProvider>
   </React.StrictMode>
