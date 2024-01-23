@@ -1,4 +1,4 @@
-import bip39 from "bip39";
+import * as Bip39 from "bip39";
 // const bip39 = require('bip39')
 import crypto from "crypto";
 // const crypto = require('crypto');
@@ -37,10 +37,11 @@ var minABI = [
   },
 ];
 export default class Wallet {
-  createMnemonic() {
-    let mnemonic = bip39.generateMnemonic(128);
+  createMnemonic = async () => {
+    let mnemonic = await Bip39.generateMnemonic(128);
+    console.log("created successfully", mnemonic);
     return mnemonic;
-  }
+  };
 
   encrypt(str) {
     const initVector = Buffer.from(initSeed);

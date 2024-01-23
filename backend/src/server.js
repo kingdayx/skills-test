@@ -12,6 +12,7 @@ const subscriberRouter = require("./routes/api/subscriber.route");
 const ieo = require("./routes/api/ieo.route");
 const p2p = require("./routes/api/p2p.route");
 const WalletService = require("./services/wallet.service");
+const { dbChecker } = require("./db/db-connection");
 
 cron.schedule("*/10 * * * *", () => {
   WalletService.updateTopTokens().then(() => {
@@ -42,6 +43,10 @@ app.use(
     },
   })
 );
+
+app.get("/", (req, res) => {
+  console.log("did it check?");
+});
 
 const port = Number(process.env.PORT || 3000);
 app.use(cookieParser());

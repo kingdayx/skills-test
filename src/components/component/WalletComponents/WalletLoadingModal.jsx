@@ -7,6 +7,8 @@ function WalletLoadingModal(props) {
     props.show ? setShow("block") : setShow("hidden");
   }, [props.show]);
 
+  
+
   return (
     <Row
       className={`${show} fixed top-0 left-0 w-screen h-screen modal black-alpha-back flex justify-center items-center`}
